@@ -56,6 +56,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
+/**
+ * This function generates the react components required to disaply the trend
+ *
+ * @param {object} trend This is an object which contains slope, description and value
+ * @param {object} classes This contains the CSS classes from the main function
+ */
 const renderMetricTrend = (trend, classes) => {
   const { slope = 0, description = '' } = trend
   const text = (
@@ -184,7 +190,7 @@ const MetricCard = (props) => {
               <Typography variant='caption'>{errorMessage}</Typography>
             </React.Fragment>
           ) : (
-            renderMetricTrend(trend, classes)
+            trend && renderMetricTrend(trend, classes)
           )}
         </div>
       </CardContent>

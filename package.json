@@ -5,6 +5,13 @@
   "author": "keetmalin",
   "license": "MIT",
   "repository": "keetmalin/react-metric-card",
+  "keywords": [
+    "react",
+    "metric",
+    "materialUI",
+    "card",
+    "metricCard"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
