@@ -18,9 +18,6 @@ import InsertChartIcon from '@material-ui/icons/InsertChartOutlined'
 import ErrorIcon from '@material-ui/icons/Error'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    height: '100%'
-  },
   content: {
     alignItems: 'center',
     display: 'flex'
@@ -95,7 +92,7 @@ const MetricCard = (props) => {
 
   const {
     fetching,
-    error,
+    errorMessage,
     errorTooltip,
     value,
     spinnerColor,
@@ -114,17 +111,22 @@ const MetricCard = (props) => {
     iconColor,
     iconBorderRadius,
     iconHeight,
-    iconWidth
+    iconWidth,
+    cardBgColor
   } = props
 
   const customClasses = makeStyles((theme) => ({
+    root: {
+      backgroundColor: cardBgColor || theme.palette.primary.white,
+      height: '100%'
+    },
     spinner: {
       color: spinnerColor
     },
     title: {
       fontWeight: 800,
       color: titleColor,
-      font: titleFontFamily,
+      fontFamily: titleFontFamily,
       fontSize: titleFontSize
     },
     value: {
@@ -145,7 +147,7 @@ const MetricCard = (props) => {
   }))()
 
   return (
-    <Card className={clsx(classes.root)}>
+    <Card className={clsx(customClasses.root)}>
       <CardContent>
         <Grid container justify='space-between'>
           <Grid item>
@@ -157,7 +159,7 @@ const MetricCard = (props) => {
               {title}
             </Typography>
             <Typography variant='h3' className={customClasses.value}>
-              {fetching ? '' : error ? '' : value}
+              {fetching ? '' : errorMessage ? '' : value}
             </Typography>
           </Grid>
           <Grid item>
@@ -174,12 +176,12 @@ const MetricCard = (props) => {
               size={spinnerSize}
               thickness={spinnerThickness}
             />
-          ) : error ? (
+          ) : errorMessage ? (
             <React.Fragment>
-              <Tooltip title={errorTooltip || error}>
+              <Tooltip title={errorTooltip || errorMessage}>
                 <ErrorIcon color='error' />
               </Tooltip>
-              <Typography variant='caption'>{error}</Typography>
+              <Typography variant='caption'>{errorMessage}</Typography>
             </React.Fragment>
           ) : (
             renderMetricTrend(trend, classes)
@@ -191,7 +193,28 @@ const MetricCard = (props) => {
 }
 
 MetricCard.propTypes = {
-  className: PropTypes.string
+  title: PropTypes.string,
+  fetching: PropTypes.bool,
+  errorMessage: PropTypes.string,
+  errorTooltip: PropTypes.string,
+  value: PropTypes.string,
+  spinnerColor: PropTypes.string,
+  spinnerSize: PropTypes.number,
+  spinnerThickness: PropTypes.number,
+  titleColor: PropTypes.string,
+  titleFontFamily: PropTypes.string,
+  titleFontSize: PropTypes.string,
+  valueColor: PropTypes.string,
+  valueFontFamily: PropTypes.string,
+  valueFontSize: PropTypes.string,
+  trend: PropTypes.object,
+  icon: PropTypes.object,
+  iconBgColor: PropTypes.string,
+  iconColor: PropTypes.string,
+  iconBorderRadius: PropTypes.string,
+  iconHeight: PropTypes.string,
+  iconWidth: PropTypes.string,
+  cardBgColor: PropTypes.string
 }
 
 export default MetricCard
