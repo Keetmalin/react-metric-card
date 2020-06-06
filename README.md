@@ -25,6 +25,8 @@ class Example extends Component {
 }
 ```
 
+http://keetmalin.github.io/react-metric-card
+
 ## License
 
 MIT © [keetmalin](https://github.com/keetmalin)

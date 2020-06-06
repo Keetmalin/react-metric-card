@@ -12,8 +12,9 @@
   "dependencies": {
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
+    "react-metric-card": "file:..",
     "react-scripts": "file:../node_modules/react-scripts",
-    "react-metric-card": "file:.."
+    "weather-icons-react": "^1.2.0"
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3"
