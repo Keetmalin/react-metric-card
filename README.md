@@ -18,13 +18,13 @@ http://keetmalin.github.io/react-metric-card
 
 ## What is this Component
 
-![React Metric Card sample usage image](readme_images/react-metric-card-sample.png?raw=true "React Metric Card sample usage image")
+![React Metric Card sample usage image](https://github.com/keetmalin/react-metric-card/blob/master/readme_images/react-metric-card-sample.png?raw=true "React Metric Card sample usage image")
 
 This is a basic component that can be used in dashboards for disaplying various types of metrics related to the dashboard data. This is mainly built from components in Material UI, and I have made this component more flexible for anyone to use with different styling and flexibility. 
 
 Constrol the width of this component, by adjusting the width of the container. Sample usage on a dashboard is given below.
 
-![React Metric Card Usage on a Dashboard](readme_images/react-metric-card-on-dashboard-example.png?raw=true "React Metric Card Usage on a Dashboard")
+![React Metric Card Usage on a Dashboard](https://github.com/keetmalin/react-metric-card/blob/master/readme_images/react-metric-card-on-dashboard-example.png?raw=true "React Metric Card Usage on a Dashboard")
 
 ## Usage
 
