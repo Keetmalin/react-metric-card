@@ -9,7 +9,8 @@ import {
   Typography,
   Icon,
   Tooltip,
-  CircularProgress
+  CircularProgress,
+  ButtonBase
 } from '@material-ui/core'
 
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward'
@@ -21,6 +22,12 @@ const useStyles = makeStyles((theme) => ({
   content: {
     alignItems: 'center',
     display: 'flex'
+  },
+  cardAction: {
+    display: 'block',
+    textAlign: 'initial',
+    height: '100%',
+    width: '100%'
   },
   title: {
     fontWeight: 800,
@@ -118,13 +125,16 @@ const MetricCard = (props) => {
     iconBorderRadius,
     iconHeight,
     iconWidth,
-    cardBgColor
+    cardBgColor,
+    cardClick,
+    cardClickFunction
   } = props
 
   const customClasses = makeStyles((theme) => ({
     root: {
       backgroundColor: cardBgColor || theme.palette.primary.white,
-      height: '100%'
+      height: '100%',
+      width: '100%'
     },
     spinner: {
       color: spinnerColor
@@ -154,46 +164,51 @@ const MetricCard = (props) => {
 
   return (
     <Card className={clsx(customClasses.root)}>
-      <CardContent>
-        <Grid container justify='space-between'>
-          <Grid item>
-            <Typography
-              className={customClasses.title}
-              gutterBottom
-              variant='body2'
-            >
-              {title}
-            </Typography>
-            <Typography variant='h3' className={customClasses.value}>
-              {fetching ? '' : errorMessage ? '' : value}
-            </Typography>
+      <ButtonBase
+        className={classes.cardAction}
+        onClick={cardClickFunction}
+        disabled={!cardClick}
+      >
+        <CardContent>
+          <Grid container justify='space-between'>
+            <Grid item>
+              <Typography
+                className={customClasses.title}
+                gutterBottom
+                variant='body2'
+              >
+                {title}
+              </Typography>
+              <Typography variant='h3' className={customClasses.value}>
+                {fetching ? '' : errorMessage ? '' : value}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Icon className={customClasses.icon}>
+                {icon || <InsertChartIcon />}
+              </Icon>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Icon className={customClasses.icon}>
-              {icon || <InsertChartIcon />}
-            </Icon>
-          </Grid>
-        </Grid>
-        <div className={classes.difference}>
-          {fetching ? (
-            <CircularProgress
-              className={customClasses.spinner}
-              // color={spinnerColor}
-              size={spinnerSize}
-              thickness={spinnerThickness}
-            />
-          ) : errorMessage ? (
-            <React.Fragment>
-              <Tooltip title={errorTooltip || errorMessage}>
-                <ErrorIcon color='error' />
-              </Tooltip>
-              <Typography variant='caption'>{errorMessage}</Typography>
-            </React.Fragment>
-          ) : (
-            trend && renderMetricTrend(trend, classes)
-          )}
-        </div>
-      </CardContent>
+          <div className={classes.difference}>
+            {fetching ? (
+              <CircularProgress
+                className={customClasses.spinner}
+                size={spinnerSize}
+                thickness={spinnerThickness}
+              />
+            ) : errorMessage ? (
+              <React.Fragment>
+                <Tooltip title={errorTooltip || errorMessage}>
+                  <ErrorIcon color='error' />
+                </Tooltip>
+                <Typography variant='caption'>{errorMessage}</Typography>
+              </React.Fragment>
+            ) : (
+              trend && renderMetricTrend(trend, classes)
+            )}
+          </div>
+        </CardContent>
+      </ButtonBase>
     </Card>
   )
 }
@@ -220,7 +235,9 @@ MetricCard.propTypes = {
   iconBorderRadius: PropTypes.string,
   iconHeight: PropTypes.string,
   iconWidth: PropTypes.string,
-  cardBgColor: PropTypes.string
+  cardBgColor: PropTypes.string,
+  cardClick: PropTypes.bool,
+  cardClickFunction: PropTypes.func
 }
 
 export default MetricCard

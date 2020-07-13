@@ -15,7 +15,8 @@ import {
   spinnerCodes,
   cardBgColorCodes,
   titleCodes,
-  valueCodes
+  valueCodes,
+  cardClickCodes
 } from './sampleCodes/sampleCodes'
 
 const App = () => {
@@ -210,13 +211,61 @@ fetching={true}
           <MetricCard
             title='SERVICE SUCCESS RATE PERCENTAGE'
             fetching={false}
-            errorMessage='An Erro Occured while fetching the metric data'
+            errorMessage='An Error Occured while fetching the metric data'
           />
         </Grid>
         <Grid item lg={6} sm={6} xl={3} xs={12}>
           <SyntaxHighlighter language='javascript' style={docco}>
             {codeSample3}
           </SyntaxHighlighter>
+        </Grid>
+      </div>
+      <br /> <hr />
+      <div>
+        <h2>
+          Clickable Card Component with on-click function (All others settings
+          are default)
+        </h2>
+        <Grid container spacing={2}>
+          <Grid item lg={6} sm={6} xl={3} xs={12}>
+            <MetricCard
+              title='CLICK ME TO SEE ANIMATION ON CARD'
+              fetching={false}
+              cardClick={true}
+              value={'89.04%'}
+              trend={{
+                slope: 1,
+                description: 'Compared to last week',
+                value: '0.5%'
+              }}
+            />
+          </Grid>
+          <Grid item lg={6} sm={6} xl={3} xs={12}>
+            <MetricCard
+              title='CLICK ME TO SEE FUNCTION CALL'
+              fetching={false}
+              cardClick={true}
+              cardClickFunction={() => {
+                alert('Card was clicked')
+              }}
+              value={'89.04%'}
+              trend={{
+                slope: 1,
+                description: 'Compared to last week',
+                value: '0.5%'
+              }}
+            />
+          </Grid>
+          <Grid item lg={6} sm={6} xl={3} xs={12}>
+            <SyntaxHighlighter language='javascript' style={docco}>
+              {cardClickCodes.noFunction}
+            </SyntaxHighlighter>
+          </Grid>
+          <Grid item lg={6} sm={6} xl={3} xs={12}>
+            <SyntaxHighlighter language='javascript' style={docco}>
+              {cardClickCodes.withFunction}
+            </SyntaxHighlighter>
+          </Grid>
         </Grid>
       </div>
       <br /> <hr />

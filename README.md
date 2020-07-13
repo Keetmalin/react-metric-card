@@ -87,6 +87,8 @@ http://keetmalin.github.io/react-metric-card
 -    `iconHeight (string)`: The height of the icon element (Eg: 50px)
 -    `iconWidth (string)`: The width of the icon element (Eg: 50px)
 -    `cardBgColor` (String): The prop for setting a background color for the entire card. (Eg: 'red', '#ffff00')
+-    `cardClick` (Boolean): This will enable the click functionality on the metric card component
+-    `cardClickFunction` (Function): This is the function that will be executed when the card is clicked. For the card to be clickable, the `cardClick` prob should be set to `true`
 
 ## License
 
