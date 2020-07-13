@@ -243,3 +243,33 @@ export const cardBgColorCodes = {
     cardBgColor='grey'
 />`
 }
+
+export const cardClickCodes = {
+  noFunction: `
+<MetricCard
+    title='CLICK ME TO SEE ANIMATION ON CARD'
+    fetching={false}
+    cardClick={true}
+    value={'89.04%'}
+    trend={{
+        slope: 1,
+        description: 'Compared to last week',
+        value: '0.5%'
+    }}
+/>`,
+  withFunction: `
+<MetricCard
+    title='CLICK ME TO SEE FUNCTION CALL'
+    fetching={false}
+    cardClick={true}
+    cardClickFunction={() => {
+      alert('Card was clicked')
+    }}
+    value={'89.04%'}
+    trend={{
+        slope: 1,
+        description: 'Compared to last week',
+        value: '0.5%'
+    }}
+/>`
+}
