@@ -5,7 +5,6 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 
 import MetricCard from 'react-metric-card'
-import 'react-metric-card/dist/index.css'
 import AccessAlarmIcon from '@material-ui/icons/AccessAlarm'
 import FlipCameraAndroidIcon from '@material-ui/icons/FlipCameraAndroid'
 import { WiDaySunnyOvercast } from 'weather-icons-react'
@@ -638,6 +637,51 @@ fetching={true}
               fetching={false}
               error={null}
               cardBgColor='grey'
+            />
+          </Grid>
+          <Grid item lg={6} sm={6} xl={3} xs={12}>
+            <SyntaxHighlighter language='javascript' style={docco}>
+              {cardBgColorCodes.blueBackground}
+            </SyntaxHighlighter>
+          </Grid>
+          <Grid item lg={6} sm={6} xl={3} xs={12}>
+            <SyntaxHighlighter language='javascript' style={docco}>
+              {cardBgColorCodes.greyBackground}
+            </SyntaxHighlighter>
+          </Grid>
+        </Grid>
+      </div>
+      <br /> <hr />
+      <div>
+        <h2>Changing the Color of the Trend Icon and Value Text using Reverse</h2>
+
+        <Grid container spacing={2}>
+          <Grid item lg={6} sm={6} xl={3} xs={12}>
+            <MetricCard
+              value={'89.04%'}
+              trend={{
+                slope: 1,
+                reverse: true,
+                description: 'Increased compared to last week',
+                value: '5.2%'
+              }}
+              title='Trend Increasing, but color is red'
+              fetching={false}
+              error={null}
+            />
+          </Grid>
+          <Grid item lg={6} sm={6} xl={3} xs={12}>
+            <MetricCard
+              value={'89.04%'}
+              trend={{
+                slope: -1,
+                reverse: true,
+                description: 'Decreased compared to last week',
+                value: '3.4%'
+              }}
+              title='Trend Decreasing, but color is green'
+              fetching={false}
+              error={null}
             />
           </Grid>
           <Grid item lg={6} sm={6} xl={3} xs={12}>

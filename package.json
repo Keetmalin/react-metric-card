@@ -1,6 +1,6 @@
 {
   "name": "react-metric-card",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A metric card component that provides data display with icons, loaders and comparisons, along with custom text segments",
   "author": "keetmalin",
   "license": "MIT",

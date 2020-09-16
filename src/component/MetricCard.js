@@ -70,12 +70,16 @@ const useStyles = makeStyles((theme) => ({
  * @param {object} classes This contains the CSS classes from the main function
  */
 const renderMetricTrend = (trend, classes) => {
-  const { slope = 0, description = '' } = trend
+  const { slope = 0, description = '', reverse = false } = trend
   const text = (
     <React.Fragment>
       <Typography
         className={
           slope >= 0
+            ? reverse
+              ? classes.differenceValueError
+              : classes.differenceValueSuccess
+            : reverse
             ? classes.differenceValueSuccess
             : classes.differenceValueError
         }
@@ -91,9 +95,21 @@ const renderMetricTrend = (trend, classes) => {
   return (
     <React.Fragment>
       {slope < 0 ? (
-        <ArrowDownwardIcon className={classes.differenceIconError} />
+        <ArrowDownwardIcon
+          className={
+            reverse
+              ? classes.differenceIconSuccess
+              : classes.differenceIconError
+          }
+        />
       ) : (
-        <ArrowUpwardIcon className={classes.differenceIconSuccess} />
+        <ArrowUpwardIcon
+          className={
+            reverse
+              ? classes.differenceIconError
+              : classes.differenceIconSuccess
+          }
+        />
       )}
       {text}
     </React.Fragment>

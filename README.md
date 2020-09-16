@@ -20,7 +20,7 @@ http://keetmalin.github.io/react-metric-card
 
 ![React Metric Card sample usage image](https://github.com/keetmalin/react-metric-card/blob/master/readme_images/react-metric-card-sample.png?raw=true "React Metric Card sample usage image")
 
-This is a basic component that can be used in dashboards for disaplying various types of metrics related to the dashboard data. This is mainly built from components in Material UI, and I have made this component more flexible for anyone to use with different styling and flexibility. 
+This is a basic component that can be used in dashboards for disaplying various types of metrics related to the dashboard data. This is mainly built from components in Material UI, and I have made this component more flexible for anyone to use with different styling and flexibility.
 
 Constrol the width of this component, by adjusting the width of the container. Sample usage on a dashboard is given below.
 
@@ -34,7 +34,6 @@ A simple usage example is given below
 import React, { Component } from 'react'
 
 import MetricCard from 'react-metric-card'
-import 'react-metric-card/dist/index.css'
 
 class Example extends Component {
   render() {
@@ -79,7 +78,7 @@ http://keetmalin.github.io/react-metric-card
 -    `titleColor (string)`: This decides the color of the text. (Eg: 'red', '#ffff00')
 -    `titleFontFamily (string)`: This decides the font family of the text. (Eg: serif)
 -    `titleFontSize (string)`: This decides the font size of the text. (Eg: 25px)
--    `trend (object)`: This is an object that descibes the trend that is shown at the bottom of the card. This object needs to have the following three properties. (`slope` (Eg: -1 or 1), `description` (Eg: any text) and `value` (Eg: any text))
+-    `trend (object)`: This is an object that descibes the trend that is shown at the bottom of the card. This object needs to have the following three properties. (`slope` (Eg: -1 or 1), `description` (Eg: any text), `value` (Eg: any text), `reverse` (Eg: boolean: this will reverse the colors of the slope))
 -    `icon (string)`: You can pass an actual icon component from MaterialUI or any other preferred component (Eg: <IconName />)
 -    `iconBgColor (string)`: Icon background color. (Eg: 'red', '#ffff00')
 -    `iconColor (string)`: Icon background color. (Eg: 'red', '#ffff00')
