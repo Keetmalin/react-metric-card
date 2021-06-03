@@ -13,8 +13,9 @@ import {
   ButtonBase
 } from '@material-ui/core'
 
-import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward'
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward'
+import TrendingFlatIcon from '@material-ui/icons/TrendingFlat'
+import TrendingUpIcon from '@material-ui/icons/TrendingUp'
+import TrendingDownIcon from '@material-ui/icons/TrendingDown'
 import InsertChartIcon from '@material-ui/icons/InsertChartOutlined'
 import ErrorIcon from '@material-ui/icons/Error'
 
@@ -47,11 +48,18 @@ const useStyles = makeStyles((theme) => ({
   differenceIconSuccess: {
     color: theme.palette.success.main
   },
+  differenceIconInfo: {
+    color: theme.palette.info.main
+  },
   differenceIconError: {
     color: theme.palette.error.main
   },
   differenceValueSuccess: {
     color: theme.palette.success.main,
+    marginRight: theme.spacing(1)
+  },
+  differenceValueInfo: {
+    color: theme.palette.info.main,
     marginRight: theme.spacing(1)
   },
   differenceValueError: {
@@ -71,16 +79,21 @@ const useStyles = makeStyles((theme) => ({
  */
 const renderMetricTrend = (trend, classes) => {
   const { slope = 0, description = '' } = trend
+  let trendValueClass = ''
+  let trendIcon = ''
+  if (slope > 0) {
+    trendValueClass = classes.differenceValueSuccess
+    trendIcon = <TrendingUpIcon className={classes.differenceIconSuccess} />
+  } else if (slope < 0) {
+    trendValueClass = classes.differenceValueError
+    trendIcon = <TrendingDownIcon className={classes.differenceIconError} />
+  } else {
+    trendValueClass = classes.differenceValueInfo
+    trendIcon = <TrendingFlatIcon className={classes.differenceIconInfo} />
+  }
   const text = (
     <React.Fragment>
-      <Typography
-        className={
-          slope >= 0
-            ? classes.differenceValueSuccess
-            : classes.differenceValueError
-        }
-        variant='body2'
-      >
+      <Typography className={trendValueClass} variant='body2'>
         {trend.value || ''}
       </Typography>
       <Typography className={classes.caption} variant='caption'>
@@ -90,11 +103,7 @@ const renderMetricTrend = (trend, classes) => {
   )
   return (
     <React.Fragment>
-      {slope < 0 ? (
-        <ArrowDownwardIcon className={classes.differenceIconError} />
-      ) : (
-        <ArrowUpwardIcon className={classes.differenceIconSuccess} />
-      )}
+      {trendIcon}
       {text}
     </React.Fragment>
   )
